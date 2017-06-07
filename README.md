@@ -125,10 +125,10 @@
 > ---|----|----|---
 > user | 是 | string | 用户名
 > pass | 是 | string | 用户密码
-> express | 是 | int 快递编号
+> express | 是 | int | 快递编号
 > s_name | 是 | string | 寄件人姓名
 > s_address | 是 | string | 寄件人地址
-> s_mobile | 是 | int 寄件人手机号
+> s_mobile | 是 | int | 寄件人手机号
 > r_name | 是 | string | 收件人姓名
 > r_address | 是 | string | 收件人地址
 > r_mobile | 是 | string | 收件人手机号
