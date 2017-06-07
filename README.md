@@ -228,17 +228,17 @@
 > 参数 | 类型 | 说明
 > ---|----|---
 >- data | Object | 订单详情
->> id | data | 订单id
->> express | data | 快递编号
->> uid | data | 用户id
->> s_name | data | 寄件人姓名
->> s_address | data | 寄件人地址
->> s_mobile | data | 寄件人手机
->> r_name | data | 收件人姓名
->> r_address | data | 收件人地址
->> r_mobile | data | 收件人手机
->> datetime | data | 订单创建日期
->> content data | 物流信息
+>- id | data | 订单id
+>- express | data | 快递编号
+>- uid | data | 用户id
+>- s_name | data | 寄件人姓名
+>- s_address | data | 寄件人地址
+>- s_mobile | data | 寄件人手机
+>- r_name | data | 收件人姓名
+>- r_address | data | 收件人地址
+>- r_mobile | data | 收件人手机
+>- datetime | data | 订单创建日期
+>- content data | 物流信息
 > info | string | 提示信息(unicode)
 > status | int | 状态代码,0:失败,1:成功
 
