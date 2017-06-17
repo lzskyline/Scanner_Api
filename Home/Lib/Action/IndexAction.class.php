@@ -51,8 +51,14 @@ class IndexAction extends Action {
         $tmp = M('logistics')->where('oid = %d',$ret['id'])
         ->join('LEFT JOIN __USER__ ON __LOGISTICS__.uid = __USER__.id')
         ->order('datetime desc')->select();
+        $ret['m_user'] = '';
         foreach($tmp as $i){
-            $ret['content'] .= "快递员【$i[username]】在【$i[address]】于【$i[datetime]】签收\n";
+            if($ret['r_address']==$i['address']){
+                $ret['m_user'] = $i['username'];
+                $ret['content'] .= "快递已在【$i[address]】签收，操作员【$i[username]】，时间【$i[datetime]】\n";
+            }
+            else
+                $ret['content'] .= "快递到达【$i[address]】，操作员【$i[username]】，时间【$i[datetime]】\n";
         }
         $this->ajaxReturn($ret,"获取成功!",1);
     }
@@ -61,5 +67,30 @@ class IndexAction extends Action {
         $ret = M('order')->where("uid = %d",$u)->field('id,express,datetime')->select();
         if(!$ret)$this->ajaxReturn(0,"没有记录!",0);
         $this->ajaxReturn($ret,"获取成功!",1);
+    }
+    public function addPicture(){
+        $u = $this->isLogin();
+        $oid = (int)I('post.oid');
+        if(!$_FILES['pic']["size"])$this->ajaxReturn(0,"请上传图片!",0);
+        $ret = M('order')->find($oid);
+        if(!$ret)$this->ajaxReturn(0,"无效的订单id!",0);
+        import('ORG.Net.Image');
+        import('ORG.Net.UploadFile');
+        $configs = array(
+            'maxSize'=>6000000,
+            'savePath'=>'./images/',
+            'allowExts'=>array('jpg', 'gif', 'png' , 'bmp'),
+            'autoSub'=>false
+        );
+        $upload = new UploadFile($configs);
+        $info=$upload->uploadOne($_FILES['pic']);
+        if(!$info) {// error
+            $this->error($upload->getErrorMsg());
+        }else{// success
+            $image=$info[0]["savename"];
+        }
+        $ret = M('order')->where("id = %d",$oid)->setField('image',$image);
+        if(!$ret)$this->ajaxReturn(0,"添加失败!",0);
+        $this->ajaxReturn($ret,"添加成功!",1);
     }
 }

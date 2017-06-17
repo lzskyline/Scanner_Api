@@ -8,6 +8,7 @@
 4.  <a href="#user-content-appendLogistics">追加物流</a>
 5.  <a href="#user-content-getOrder">获取订单</a>
 6.  <a href="#user-content-getList">获取列表</a>
+7.  <a href="#user-content-addPicture">上传图片</a>
 
 ***
 
@@ -238,7 +239,9 @@
 > r_address | data | 收件人地址
 > r_mobile | data | 收件人手机
 > datetime | data | 订单创建日期
-> content data | 物流信息
+> content | data | 物流信息
+> image | data | 物流图片
+> m_user | data | 签收人姓名
 > info | string | 提示信息(unicode)
 > status | int | 状态代码,0:失败,1:成功
 
@@ -262,7 +265,9 @@
     "r_address": "receiverAddress",
     "r_mobile": "13000000001",
     "datetime": "2017-06-07 20:57:53",
-    "content": "快递员【test】在【天津市】于【2017-06-07 20:58:05】签收\n"
+    "image": "",
+    "m_user": "",
+    "content": "快递到达【天津市】，操作员【test】，时间【2017-06-07 20:58:05】\n"
   },
   "info": "获取成功!",
   "status": 1
@@ -323,5 +328,55 @@
   ],
   "info": "获取成功!",
   "status": 1
+}
+```
+
+**9.<a id="user-content-addPicture">上传图片</a>**
+
+###### 接口功能
+
+> 签收订单后上传签收图片
+
+###### URL
+
+> [/index.php/Index/addPicture]()
+
+###### 返回格式
+
+> JSON
+
+###### HTTP请求方式
+
+> POST
+
+###### 请求参数
+
+> 参数 | 必选 | 类型 | 说明
+> ---|----|----|---
+> user | 是 | string | 用户名
+> pass | 是 | string | 用户密码
+> oid | 是 | int | 订单id
+> pic | 是 | file | 签收图片(目录路径:/images/)
+
+###### 返回字段
+
+> 参数 | 类型 | 说明
+> ---|----|---
+>- data | int | 订单id
+> info | string | 提示信息(unicode)
+> status | int | 状态代码,0:失败,1:成功
+
+###### 接口示例
+
+> 地址：> [/index.php/Index/getList]()
+> 
+> 参数： user=test& pass=123456
+
+
+``` javascript
+{
+    "data": 1,
+    "info": "添加成功!",
+    "status": 1
 }
 ```
