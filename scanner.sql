@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100121
 File Encoding         : 65001
 
-Date: 2017-06-07 21:42:57
+Date: 2017-06-18 00:54:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,7 +26,7 @@ CREATE TABLE `s_logistics` (
   `datetime` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique logistics` (`oid`,`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of s_logistics
@@ -48,13 +48,14 @@ CREATE TABLE `s_order` (
   `r_address` varchar(100) NOT NULL,
   `r_mobile` varchar(11) NOT NULL,
   `datetime` datetime NOT NULL,
+  `image` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of s_order
 -- ----------------------------
-INSERT INTO `s_order` VALUES ('1', '1234567890123', '1', 'sender', 'senderAddress', '13000000000', 'receiver', 'receiverAddress', '13000000001', '2017-06-07 20:57:53');
+INSERT INTO `s_order` VALUES ('1', '1234567890123', '1', 'sender', 'senderAddress', '13000000000', 'receiver', 'receiverAddress', '13000000001', '2017-06-07 20:57:53', '59455c722a9e7.png');
 
 -- ----------------------------
 -- Table structure for s_user
@@ -73,4 +74,3 @@ CREATE TABLE `s_user` (
 -- Records of s_user
 -- ----------------------------
 INSERT INTO `s_user` VALUES ('1', 'test', 'e10adc3949ba59abbe56e057f20f883e', '13131313131', '天津市');
-SET FOREIGN_KEY_CHECKS=1;

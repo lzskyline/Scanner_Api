@@ -1,0 +1,6 @@
+[ 2017-06-19T21:40:04+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001155s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.017836s ]
+ERR: 非法操作:index
+

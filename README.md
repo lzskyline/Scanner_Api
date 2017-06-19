@@ -368,9 +368,9 @@
 
 ###### 接口示例
 
-> 地址：> [/index.php/Index/getList]()
+> 地址：> [/index.php/Index/addPicture]()
 > 
-> 参数： user=test& pass=123456
+> 参数： user=test& pass=123456& ord=1& pic=FILE
 
 
 ``` javascript
